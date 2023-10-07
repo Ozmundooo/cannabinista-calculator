@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Head from "next/head";
 export default function Home() {
   const [start, setStart] = useState(0);
 
@@ -52,74 +53,83 @@ export default function Home() {
     }, 500);
   }, []);
   return (
-    <main className="min-h-screen bg-secondary">
-      <h1
-        className={
-          start !== 0
-            ? "text-center pt-10 text-5xl font-title text-transparent tracking-tighter duration-1000 opacity-100 "
-            : "text-center pt-10 text-5xl font-title text-transparent  tracking-widest duration-1000 opacity-0"
-        }
-      >
-        Marijuana Mathematics
-      </h1>
-      <section className="">
-        <div>
-          <motion.form
-            initial={{ opacity: 0, y: 200 }}
-            animate={{ opacity: 100, y: 0 }}
-            transition={{ ease: "easeOut", duration: 1 }}
-            className="mx-6 my-5 bg-tertiary p-5 rounded-2xl font-subtitle"
-            onSubmit={handleSubmit}
-          >
-            <h2 className="font-title text-white text-2xl my-1">
-              Step 1: Calculate Potency For the Entire Batch
-            </h2>
-            <div className="flex flex-col my-2">
-              <label
-                className="font-subtitle text-white text-lg my-1"
-                htmlFor="startingAmount"
-              >
-                Starting Amount of Cannabis Product in Grams (g)
-              </label>
-              <input
-                type="number"
-                id="startingAmount"
-                className="py-2 pl-2 bg-transparent text-white border-b-2 focus:py-3 duration-500"
-                value={startingAmount}
-                onChange={(e) => setStartingAmount(e.target.value)}
-              />
-            </div>
-            <div className="flex flex-col my-2">
-              <label
-                htmlFor="thcPercent"
-                className="font-subtitle text-white text-lg my-1"
-              >
-                THC/THCA %
-              </label>
-              <input
-                type="number"
-                id="thcPercent"
-                className="py-2 pl-2 bg-transparent text-white border-b-2 focus:py-3 duration-500"
-                value={thcPercent}
-                onChange={(e) => setTHCPercent(e.target.value)}
-              />
-            </div>
-            <div className="flex flex-col my-2">
-              <label
-                className="font-subtitle text-white text-lg my-1"
-                htmlFor="cbdPercent"
-              >
-                CBD/CBDA %
-              </label>
-              <input
-                type="number"
-                className="py-2 pl-2 bg-transparent text-white border-b-2 focus:py-3 duration-500"
-                id="cbdPercent"
-                value={cbdPercent}
-                onChange={(e) => setCBDPercent(e.target.value)}
-              />
-            </div>
-            {/* 
+    <>
+      <Head>
+        <title>Marijuana Mathematics</title>
+        <meta
+          name="description"
+          content="Calculate potency for your infused products."
+        />
+        {/* Add any additional meta tags or links to CSS/JS files here */}
+      </Head>
+      <main className="min-h-screen bg-secondary">
+        <h1
+          className={
+            start !== 0
+              ? "text-center pt-10 text-5xl font-title text-transparent tracking-tighter duration-1000 opacity-100 "
+              : "text-center pt-10 text-5xl font-title text-transparent  tracking-widest duration-1000 opacity-0"
+          }
+        >
+          Marijuana Mathematics
+        </h1>
+        <section className="">
+          <div>
+            <motion.form
+              initial={{ opacity: 0, y: 200 }}
+              animate={{ opacity: 100, y: 0 }}
+              transition={{ ease: "easeOut", duration: 1 }}
+              className="mx-6 my-5 bg-tertiary p-5 rounded-2xl font-subtitle"
+              onSubmit={handleSubmit}
+            >
+              <h2 className="font-title text-white text-2xl my-1">
+                Step 1: Calculate Potency For the Entire Batch
+              </h2>
+              <div className="flex flex-col my-2">
+                <label
+                  className="font-subtitle text-white text-lg my-1"
+                  htmlFor="startingAmount"
+                >
+                  Starting Amount of Cannabis Product in Grams (g)
+                </label>
+                <input
+                  type="number"
+                  id="startingAmount"
+                  className="py-2 pl-2 bg-transparent text-white border-b-2 focus:py-3 duration-500"
+                  value={startingAmount}
+                  onChange={(e) => setStartingAmount(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col my-2">
+                <label
+                  htmlFor="thcPercent"
+                  className="font-subtitle text-white text-lg my-1"
+                >
+                  THC/THCA %
+                </label>
+                <input
+                  type="number"
+                  id="thcPercent"
+                  className="py-2 pl-2 bg-transparent text-white border-b-2 focus:py-3 duration-500"
+                  value={thcPercent}
+                  onChange={(e) => setTHCPercent(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col my-2">
+                <label
+                  className="font-subtitle text-white text-lg my-1"
+                  htmlFor="cbdPercent"
+                >
+                  CBD/CBDA %
+                </label>
+                <input
+                  type="number"
+                  className="py-2 pl-2 bg-transparent text-white border-b-2 focus:py-3 duration-500"
+                  id="cbdPercent"
+                  value={cbdPercent}
+                  onChange={(e) => setCBDPercent(e.target.value)}
+                />
+              </div>
+              {/* 
             <h2 className="font-title text-white text-2xl my-1">
               Step 2: Creation Portions/Servings
             </h2>
@@ -154,42 +164,45 @@ export default function Home() {
               />
             </div> */}
 
-            <button
-              className="my-3 border-white border-2 py-2 px-6 rounded-md text-white font-subtitle text-xl hover:bg-secondary hover:border-secondary duration-700"
-              type="submit"
-            >
-              Calculate
-            </button>
-          </motion.form>
+              <button
+                className="my-3 border-white border-2 py-2 px-6 rounded-md text-white font-subtitle text-xl hover:bg-secondary hover:border-secondary duration-700"
+                type="submit"
+              >
+                Calculate
+              </button>
+            </motion.form>
 
-          <motion.div
-            initial={{ opacity: 0, y: 200 }}
-            animate={{ opacity: 100, y: 0 }}
-            transition={{ ease: "easeIn", duration: 1 }}
-            className="mx-6 my-5 bg-tertiary p-5 rounded-2xl font-subtitle "
-          >
-            <h2 className="font-title text-white text-2xl my-1">
-              Potency Results
-            </h2>
-            <p className="font-subtitle text-white text-lg my-1">
-              Total mg of THC: {potencyResults.totalTHC}
-              <span className="text-sm">mg</span>
-            </p>
-            <p className="font-subtitle text-white text-lg my-1">
-              Total mg of CBD: {potencyResults.totalCBD}
-              <span className="text-sm">mg</span>
-            </p>
-            <p className="font-subtitle text-white text-lg my-1">
-              Total mg of THC per teaspoon: {potencyResults.totalTHCPerTeaspoon}
-              <span className="text-sm">mg</span>
-            </p>
-            <p className="font-subtitle text-white text-lg my-1">
-              Total mg of CBD per teaspoon: {potencyResults.totalCBDPerTeaspoon}
-              <span className="text-sm">mg</span>
-            </p>
-          </motion.div>
-        </div>
-      </section>
-    </main>
+            <motion.div
+              initial={{ opacity: 0, y: 200 }}
+              animate={{ opacity: 100, y: 0 }}
+              transition={{ ease: "easeIn", duration: 1 }}
+              className="mx-6 my-5 bg-tertiary p-5 rounded-2xl font-subtitle "
+            >
+              <h2 className="font-title text-white text-2xl my-1">
+                Potency Results
+              </h2>
+              <p className="font-subtitle text-white text-lg my-1">
+                Total mg of THC: {potencyResults.totalTHC}
+                <span className="text-sm">mg</span>
+              </p>
+              <p className="font-subtitle text-white text-lg my-1">
+                Total mg of CBD: {potencyResults.totalCBD}
+                <span className="text-sm">mg</span>
+              </p>
+              <p className="font-subtitle text-white text-lg my-1">
+                Total mg of THC per teaspoon:{" "}
+                {potencyResults.totalTHCPerTeaspoon}
+                <span className="text-sm">mg</span>
+              </p>
+              <p className="font-subtitle text-white text-lg my-1">
+                Total mg of CBD per teaspoon:{" "}
+                {potencyResults.totalCBDPerTeaspoon}
+                <span className="text-sm">mg</span>
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
