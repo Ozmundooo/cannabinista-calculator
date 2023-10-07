@@ -9,7 +9,7 @@ export default function Home() {
   const [thcPercent, setTHCPercent] = useState(1);
   const [cbdPercent, setCBDPercent] = useState(2);
 
-  const [teaspoonsUsed, setTeaspoonsUsed] = useState(5);
+  const [teaspoonsUsed, setTeaspoonsUsed] = useState(1);
   const [totalServings, setTotalServings] = useState(10);
   const [potencyResults, setPotencyResults] = useState({
     totalTHC: 0,
