@@ -62,7 +62,7 @@ export default function Home() {
         />
         {/* Add any additional meta tags or links to CSS/JS files here */}
       </Head>
-      <main className="min-h-screen bg-secondary">
+      <main className="min-h-screen bg-secondary lg:my-auto">
         <h1
           className={
             start !== 0
@@ -72,13 +72,13 @@ export default function Home() {
         >
           Marijuana Mathematics
         </h1>
-        <section className="">
-          <div>
+        <section className=" lg:my-auto">
+          <div className="lg:flex lg:flex-row ">
             <motion.form
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 100, y: 0 }}
               transition={{ ease: "easeOut", duration: 1 }}
-              className="mx-6 my-5 bg-tertiary p-5 rounded-2xl font-subtitle"
+              className="mx-6 my-5 bg-tertiary p-5 rounded-2xl font-subtitle lg:w-3/4"
               onSubmit={handleSubmit}
             >
               <h2 className="font-title text-white text-2xl my-1">
@@ -176,7 +176,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 100, y: 0 }}
               transition={{ ease: "easeIn", duration: 1 }}
-              className="mx-6 my-5 bg-tertiary p-5 rounded-2xl font-subtitle "
+              className="mx-6 my-5 bg-tertiary p-5 rounded-2xl font-subtitle lg:w-1/4"
             >
               <h2 className="font-title text-white text-2xl my-1">
                 Potency Results
