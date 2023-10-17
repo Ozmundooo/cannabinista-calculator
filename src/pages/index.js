@@ -286,7 +286,7 @@ export default function Home() {
                     <CountUp
                       decimals={2}
                       duration={0.3}
-                      end={potencyResults.totalTHCPerServings}
+                      end={potencyResults.totalTHCPerServings * tablespoonsUsed}
                     />
                     <span className="text-sm font-light">mg</span>
                   </p>
@@ -297,7 +297,7 @@ export default function Home() {
                     <CountUp
                       decimals={2}
                       duration={0.5}
-                      end={potencyResults.totalCBDPerServings}
+                      end={potencyResults.totalCBDPerServings * tablespoonsUsed}
                     />
 
                     <span className="text-sm font-light">mg</span>
@@ -309,7 +309,10 @@ export default function Home() {
                     <CountUp
                       decimals={2}
                       duration={0.5}
-                      end={potencyResults.totalTHCPerServings / totalServings}
+                      end={
+                        (potencyResults.totalTHCPerServings / totalServings) *
+                        tablespoonsUsed
+                      }
                     />
 
                     <span className="text-sm font-light">mg</span>
@@ -321,7 +324,10 @@ export default function Home() {
                     <CountUp
                       decimals={2}
                       duration={0.5}
-                      end={potencyResults.totalCBDPerServings / totalServings}
+                      end={
+                        (potencyResults.totalCBDPerServings / totalServings) *
+                        tablespoonsUsed
+                      }
                     />
 
                     <span className="text-sm font-light">mg</span>
