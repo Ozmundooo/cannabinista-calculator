@@ -71,6 +71,9 @@ export default function Home() {
           name="description"
           content="Calculate potency for your infused products."
         />
+        <meta property="og:image" content="/canabinista.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         {/* Add any additional meta tags or links to CSS/JS files here */}
       </Head>
       <main className="min-h-screen bg-secondary lg:my-auto">
