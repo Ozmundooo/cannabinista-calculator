@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import Head from "next/head";
+import cannabinistaLogo from "../assets/cannabinista.png";
 export default function Home() {
   const [start, setStart] = useState(0);
 
@@ -65,7 +66,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Marijuana Mathematics</title>
+        <title>canabinista - Marijuana Mathematics</title>
         <meta
           name="description"
           content="Calculate potency for your infused products."
@@ -73,15 +74,8 @@ export default function Home() {
         {/* Add any additional meta tags or links to CSS/JS files here */}
       </Head>
       <main className="min-h-screen bg-secondary lg:my-auto">
-        <h1
-          className={
-            start !== 0
-              ? "text-center pt-10 text-5xl lg:text-7xl font-title text-transparent tracking-tighter duration-1000 opacity-100 "
-              : "text-center pt-10 text-5xl lg:text-7xl font-title text-transparent  tracking-widest duration-1000 opacity-0"
-          }
-        >
-          Marijuana Mathematics
-        </h1>
+        <Image className="mx-auto my-5" src={cannabinistaLogo} />
+
         <section className=" lg:my-auto">
           <div className="xl:flex xl:flex-row xl:mx-10 2xl:mx-40">
             <motion.form
@@ -102,7 +96,7 @@ export default function Home() {
               <div className="flex flex-row my-2 gap-5 justify-between">
                 <div className="w-full">
                   <label
-                    className="font-subtitle text-white text-lg lg:text-xl w-full my-auto"
+                    className="font-subtitle font-medium text-white text-lg lg:text-xl w-full my-auto"
                     htmlFor="startingAmount"
                   >
                     Grams of product
@@ -218,7 +212,7 @@ export default function Home() {
                 />
               </div>
               <button
-                className="my-3 w-full border-2 py-2 px-6 rounded-md text-white font-subtitle text-xl bg-secondary border-secondary duration-700"
+                className="my-3 w-full  py-3 px-6 rounded-md text-white font-subtitle text-xl bg-black  duration-700"
                 type="submit"
               >
                 Calculate
@@ -229,9 +223,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 100, y: 0 }}
               transition={{ ease: "easeOut", duration: 1 }}
-              className="mx-6 my-5 bg-primary p-5 rounded-2xl font-subtitle xl:w-1/4 "
+              className="mx-6 my-5 bg-[#635256] p-5 rounded-2xl font-subtitle xl:w-1/4 "
             >
-              <div className="  rounded-lg  text-secondary ">
+              <div className="  rounded-lg  text-white ">
                 <h2 className="font-title  text-2xl my-1">Results</h2>
                 <div className="flex flex-row justify-between my-2 gap-5  font-subtitle text-xl">
                   <p className="my-auto">Total mg of THC</p>
