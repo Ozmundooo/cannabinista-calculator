@@ -218,7 +218,7 @@ export default function Home() {
                 />
               </div>
               <button
-                className="my-3 w-full  py-3 px-6 rounded-md text-white font-subtitle text-xl bg-[#635256]  duration-700"
+                className="my-3 w-full  py-3 px-6 rounded-md text-black font-subtitle text-xl bg-[#B1C354]  duration-700"
                 type="submit"
               >
                 Calculate
