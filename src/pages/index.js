@@ -91,10 +91,10 @@ export default function Home() {
               className="mx-6 my-5 bg-[#F3F0EB] p-5 rounded-2xl font-subtitle xl:w-3/4"
               onSubmit={handleSubmit}
             >
-              <h2 className="font-title text-black text-2xl lg:text-4xl my-1 lg:text-center  lg:mx-auto">
+              <h2 className="font-title font-semibold text-black text-2xl lg:text-4xl my-1 mb-3 lg:text-center  lg:mx-auto">
                 Step 1: Calculate Potency For the Entire Batch
               </h2>
-              <p className="text-sm lg:text-base text-black lg:text-center lg:w-3/4 lg:mx-auto mt-2">
+              <p className=" text-sm lg:text-base text-black lg:text-center lg:w-3/4 lg:mx-auto mt-2">
                 Calculate total batch potency by entering product weight
                 (grams), THC/THCA percentage, and CBD/CBDA percentage. Get total
                 THC and CBD in milligrams (mg) for dosing.
@@ -178,7 +178,7 @@ export default function Home() {
                   ))}
                 </select>
               </div>
-              <h2 className="font-title text-black text-2xl lg:text-4xl my-1 lg:text-center  lg:mx-auto">
+              <h2 className="font-title font-semibold text-black text-2xl lg:text-4xl my-3 lg:text-center  lg:mx-auto">
                 Step 2: Creation Portions/Servings
               </h2>
               <p className="text-sm lg:text-base text-black lg:text-center lg:w-3/4 lg:mx-auto mt-2">
@@ -232,7 +232,9 @@ export default function Home() {
               className="mx-6 my-5 bg-[#F3F0EB] p-5 rounded-2xl font-subtitle xl:w-1/4 "
             >
               <div className="  rounded-lg  text-black ">
-                <h2 className="font-title  text-2xl my-1">Results</h2>
+                <h2 className="font-title font-semibold text-2xl my-1 mb-3">
+                  Results
+                </h2>
                 <div className="flex flex-row justify-between my-2 gap-5  font-subtitle text-xl">
                   <p className="my-auto">Total mg of THC</p>
                   <p className="font-medium text-2xl my-auto">
