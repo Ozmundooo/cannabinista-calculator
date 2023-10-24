@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import Head from "next/head";
-import cannabinistaLogo from "../assets/cannabinista.png";
+import cannabinistaLogo from "../assets/cannabinista.jpg";
 export default function Home() {
   const [start, setStart] = useState(0);
 
@@ -76,8 +76,11 @@ export default function Home() {
         <meta property="og:image:height" content="630" />
         {/* Add any additional meta tags or links to CSS/JS files here */}
       </Head>
-      <main className="min-h-screen bg-secondary lg:my-auto">
-        <Image className="mx-auto my-5" src={cannabinistaLogo} />
+      <main className="min-h-screen bg-white lg:my-auto">
+        <Image
+          className="mx-auto my-6 h-[15vh] w-auto"
+          src={cannabinistaLogo}
+        />
 
         <section className=" lg:my-auto">
           <div className="xl:flex xl:flex-row xl:mx-10 2xl:mx-40">
@@ -85,13 +88,13 @@ export default function Home() {
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 100, y: 0 }}
               transition={{ ease: "easeOut", duration: 1 }}
-              className="mx-6 my-5 bg-tertiary p-5 rounded-2xl font-subtitle xl:w-3/4"
+              className="mx-6 my-5 bg-[#F3F0EB] p-5 rounded-2xl font-subtitle xl:w-3/4"
               onSubmit={handleSubmit}
             >
-              <h2 className="font-title text-white text-2xl lg:text-4xl my-1 lg:text-center  lg:mx-auto">
+              <h2 className="font-title text-black text-2xl lg:text-4xl my-1 lg:text-center  lg:mx-auto">
                 Step 1: Calculate Potency For the Entire Batch
               </h2>
-              <p className="text-sm lg:text-base text-white lg:text-center lg:w-3/4 lg:mx-auto mt-2">
+              <p className="text-sm lg:text-base text-black lg:text-center lg:w-3/4 lg:mx-auto mt-2">
                 Calculate total batch potency by entering product weight
                 (grams), THC/THCA percentage, and CBD/CBDA percentage. Get total
                 THC and CBD in milligrams (mg) for dosing.
@@ -99,12 +102,12 @@ export default function Home() {
               <div className="flex flex-row my-2 gap-5 justify-between">
                 <div className="w-full">
                   <label
-                    className="font-subtitle font-medium text-white text-lg lg:text-xl w-full my-auto"
+                    className="font-subtitle font-medium text-black text-lg lg:text-xl w-full my-auto"
                     htmlFor="startingAmount"
                   >
                     Grams of product
                   </label>
-                  <p className="text-sm lg:text-base text-white opacity-60">
+                  <p className="text-sm lg:text-base text-black opacity-60">
                     (Can be flower, wax, oil, etc)
                   </p>
                 </div>
@@ -120,7 +123,7 @@ export default function Home() {
               <div className="flex flex-row my-2 gap-5 justify-between">
                 <label
                   htmlFor="thcPercent"
-                  className="font-subtitle text-white text-lg lg:text-xl w-full my-auto"
+                  className="font-subtitle text-black text-lg lg:text-xl w-full my-auto"
                 >
                   THC/THCA %
                 </label>
@@ -134,7 +137,7 @@ export default function Home() {
               </div>
               <div className="flex flex-row my-2 gap-5 justify-between">
                 <label
-                  className="font-subtitle text-white text-lg lg:text-xl w-full my-auto"
+                  className="font-subtitle text-black text-lg lg:text-xl w-full my-auto"
                   htmlFor="cbdPercent"
                 >
                   CBD/CBDA %
@@ -150,12 +153,12 @@ export default function Home() {
               <div className="flex flex-row my-2 gap-5 justify-between">
                 <div className="w-full">
                   <label
-                    className="font-subtitle text-white text-lg lg:text-xl w-full my-auto"
+                    className="font-subtitle text-black text-lg lg:text-xl w-full my-auto"
                     htmlFor="startingAmount"
                   >
                     Cups of Oil, Alcohol, or Fat
                   </label>
-                  <p className="text-sm lg:text-base text-white opacity-60">
+                  <p className="text-sm lg:text-base text-black opacity-60">
                     (Butter / Lecithin) For Infusion*
                   </p>
                 </div>
@@ -175,10 +178,10 @@ export default function Home() {
                   ))}
                 </select>
               </div>
-              <h2 className="font-title text-white text-2xl lg:text-4xl my-1 lg:text-center  lg:mx-auto">
+              <h2 className="font-title text-black text-2xl lg:text-4xl my-1 lg:text-center  lg:mx-auto">
                 Step 2: Creation Portions/Servings
               </h2>
-              <p className="text-sm lg:text-base text-white lg:text-center lg:w-3/4 lg:mx-auto mt-2">
+              <p className="text-sm lg:text-base text-black lg:text-center lg:w-3/4 lg:mx-auto mt-2">
                 Determine the potency per serving in your recipe by specifying
                 the number of tablespoons of oil and the total servings. This
                 calculation will yield the milligrams (mg) of THC and CBD in the
@@ -186,7 +189,7 @@ export default function Home() {
               </p>
               <div className="flex flex-row my-2 gap-5 justify-between">
                 <label
-                  className="font-subtitle text-white text-lg lg:text-xl w-full my-auto"
+                  className="font-subtitle text-black text-lg lg:text-xl w-full my-auto"
                   htmlFor="tablespoonsUsed"
                 >
                   Tablespoons of oil in your recipe
@@ -201,7 +204,7 @@ export default function Home() {
               </div>
               <div className="flex flex-row my-2 gap-5  justify-between">
                 <label
-                  className="font-subtitle text-white text-lg lg:text-xl w-full my-auto"
+                  className="font-subtitle text-black text-lg lg:text-xl w-full my-auto"
                   htmlFor="totalServings"
                 >
                   Servings in your recipe
@@ -215,7 +218,7 @@ export default function Home() {
                 />
               </div>
               <button
-                className="my-3 w-full  py-3 px-6 rounded-md text-white font-subtitle text-xl bg-black  duration-700"
+                className="my-3 w-full  py-3 px-6 rounded-md text-white font-subtitle text-xl bg-[#635256]  duration-700"
                 type="submit"
               >
                 Calculate
@@ -226,9 +229,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 100, y: 0 }}
               transition={{ ease: "easeOut", duration: 1 }}
-              className="mx-6 my-5 bg-[#635256] p-5 rounded-2xl font-subtitle xl:w-1/4 "
+              className="mx-6 my-5 bg-[#F3F0EB] p-5 rounded-2xl font-subtitle xl:w-1/4 "
             >
-              <div className="  rounded-lg  text-white ">
+              <div className="  rounded-lg  text-black ">
                 <h2 className="font-title  text-2xl my-1">Results</h2>
                 <div className="flex flex-row justify-between my-2 gap-5  font-subtitle text-xl">
                   <p className="my-auto">Total mg of THC</p>
