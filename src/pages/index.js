@@ -68,7 +68,7 @@ export default function Home() {
     setTimeout(() => {
       setStart(1);
     }, 500);
-  }, [checkedDecarboxylation, startingAmount, thcPercent, cbdPercent]);
+  }, [checkedDecarboxylation, startingAmount, thcPercent, cbdPercent, cups]);
   return (
     <>
       <Head>
