@@ -72,7 +72,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>canabinista - Marijuana Mathematics</title>
+        <title>cannabinista - Marijuana Mathematics</title>
         <meta
           name="description"
           content="Calculate potency for your infused products."
