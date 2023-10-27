@@ -10,8 +10,8 @@ export default function Home() {
   const [startingAmount, setStartingAmount] = useState(1);
   const [thcPercent, setTHCPercent] = useState(1);
   const [cbdPercent, setCBDPercent] = useState(1);
-  const [cups, setCups] = useState("1/16");
-  const [cupsToTablespoons, setCupsToTablespoons] = useState(1.0);
+  const [cups, setCups] = useState(1);
+  const [checkedDecarboxylation, setCheckedDecarboxylation] = useState(false);
   const [tablespoonsUsed, setTablespoonUsed] = useState(1);
   const [totalServings, setTotalServings] = useState(1);
   const [potencyResults, setPotencyResults] = useState({
@@ -22,13 +22,19 @@ export default function Home() {
     totalTHCPerServings: 0,
     totalCBDPerServings: 0,
   });
-  const cupOptions = ["1/16", "1/8", "1/4", "1/2", "1", "2"];
+
   // Function to calculate potency results
   const calculatePotency = () => {
     // Your potency calculation logic here
     // This is just a placeholder for demonstration purposes
-    const totalTHC = ((startingAmount * thcPercent) / 100) * 1000; // Replace with actual calculation
-    const totalCBD = ((startingAmount * cbdPercent) / 100) * 1000; // Replace with actual calculation
+    const totalTHC =
+      ((startingAmount * thcPercent) / 100) *
+      1000 *
+      (checkedDecarboxylation ? 0.877 : 1); // Replace with actual calculation
+    const totalCBD =
+      ((startingAmount * cbdPercent) / 100) *
+      1000 *
+      (checkedDecarboxylation ? 0.877 : 1); // Replace with actual calculation
 
     const totalTHCPerTablespoon = totalTHC * (1 / (eval(cups) / (1 / 16))); // Replace with actual calculation
     const totalCBDPerTablespoon = totalCBD * (1 / (eval(cups) / (1 / 16))); // Replace with actual calculation
@@ -62,7 +68,7 @@ export default function Home() {
     setTimeout(() => {
       setStart(1);
     }, 500);
-  }, []);
+  }, [checkedDecarboxylation, startingAmount, thcPercent, cbdPercent]);
   return (
     <>
       <Head>
@@ -88,13 +94,13 @@ export default function Home() {
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 100, y: 0 }}
               transition={{ ease: "easeOut", duration: 1 }}
-              className="mx-6 my-5 bg-[#F3F0EB] p-5 rounded-2xl font-subtitle xl:w-3/4"
+              className="mx-6 my-5 bg-[#F3F0EB] p-5 rounded-2xl font-subtitle "
               onSubmit={handleSubmit}
             >
-              <h2 className="font-title font-semibold text-black text-2xl lg:text-4xl my-1 mb-3 lg:text-center  lg:mx-auto">
-                Step 1: Calculate Potency For the Entire Batch
+              <h2 className="font-title font-semibold text-black text-2xl lg:text-4xl my-5 mb-1 lg:text-center  lg:mx-auto">
+                Step 1: Calculate Potency For Your Infusion
               </h2>
-              <p className=" text-sm lg:text-base text-black lg:text-center lg:w-3/4 lg:mx-auto mt-2">
+              <p className=" text-sm lg:text-base text-black lg:text-center w-5/6 lg:w-3/4 lg:mx-auto my-2 mt-1 ">
                 Calculate total batch potency by entering product weight
                 (grams), THC/THCA percentage, and CBD/CBDA percentage. Get total
                 THC and CBD in milligrams (mg) for dosing.
@@ -105,7 +111,7 @@ export default function Home() {
                     className="font-subtitle font-medium text-black text-lg lg:text-xl w-full my-auto"
                     htmlFor="startingAmount"
                   >
-                    Grams of product
+                    Starting amount of cannabis flower in grams
                   </label>
                   <p className="text-sm lg:text-base text-black opacity-60">
                     (Can be flower, wax, oil, etc)
@@ -115,18 +121,26 @@ export default function Home() {
                 <input
                   type="number"
                   id="startingAmount"
+                  step="0.000001"
                   className="w-[100px] lg:w-[150px] py-2 pl-3 bg-gray text-black h-12 text-xl my-auto rounded-md"
                   value={startingAmount}
                   onChange={(e) => setStartingAmount(e.target.value)}
                 />
               </div>
               <div className="flex flex-row my-2 gap-5 justify-between">
-                <label
-                  htmlFor="thcPercent"
-                  className="font-subtitle text-black text-lg lg:text-xl w-full my-auto"
-                >
-                  THC/THCA %
-                </label>
+                <div className="w-full">
+                  <label
+                    className="font-subtitle font-medium text-black text-lg lg:text-xl w-full my-auto"
+                    htmlFor="thcPercent"
+                  >
+                    THC/THCA %
+                  </label>
+                  <p className="text-sm lg:text-base text-black opacity-60 lg:w-3/4">
+                    THC (tetrahydrocannabinol) is the psychoactive compound in
+                    cannabis, while THCA (tetrahydrocannabinolic acid) is its
+                    non-psychoactive precursor found in raw cannabis.
+                  </p>
+                </div>
                 <input
                   type="number"
                   id="thcPercent"
@@ -136,12 +150,21 @@ export default function Home() {
                 />
               </div>
               <div className="flex flex-row my-2 gap-5 justify-between">
-                <label
-                  className="font-subtitle text-black text-lg lg:text-xl w-full my-auto"
-                  htmlFor="cbdPercent"
-                >
-                  CBD/CBDA %
-                </label>
+                <div className="w-full">
+                  <label
+                    className="font-subtitle font-medium text-black text-lg lg:text-xl w-full my-auto"
+                    htmlFor="cbdPercent"
+                  >
+                    CBD/CBDA %
+                  </label>
+                  <p className="text-sm lg:text-base text-black opacity-60 lg:w-3/4">
+                    CBD (cannabidiol) is a non-psychoactive compound in cannabis
+                    known for its potential therapeutic benefits, while CBDA
+                    (cannabidiolic acid) is the precursor to CBD found in raw
+                    cannabis, which needs to be decarboxylated (heated) to
+                    become CBD with active properties.
+                  </p>
+                </div>
                 <input
                   type="number"
                   className="w-[100px] lg:w-[150px] py-2 pl-3 bg-gray text-black h-12 text-xl my-auto rounded-md"
@@ -150,38 +173,109 @@ export default function Home() {
                   onChange={(e) => setCBDPercent(e.target.value)}
                 />
               </div>
-              <div className="flex flex-row my-2 gap-5 justify-between">
+              <div className="flex flex-row my-2 mb-5 gap-5 justify-between">
                 <div className="w-full">
                   <label
                     className="font-subtitle text-black text-lg lg:text-xl w-full my-auto"
                     htmlFor="startingAmount"
                   >
-                    Cups of Oil, Alcohol, or Fat
+                    Amount of infusion liquid in cups
                   </label>
                   <p className="text-sm lg:text-base text-black opacity-60">
-                    (Butter / Lecithin) For Infusion*
+                    (ie. butter, olive oil, coconut oil, MCT oil, alcohol)
                   </p>
                 </div>
 
-                <select
+                <input
+                  type="number"
                   className="w-[100px] lg:w-[150px] py-2 pl-3 bg-gray text-black h-12 text-xl my-auto rounded-md"
+                  id="cups"
+                  step="0.000001"
+                  value={cups}
                   onChange={(e) => setCups(e.target.value)}
-                >
-                  {cupOptions.map((option, index) => (
-                    <option
-                      className="text-black font-subtext"
-                      key={index}
-                      value={option.toLowerCase()}
-                    >
-                      {option}
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
-              <h2 className="font-title font-semibold text-black text-2xl lg:text-4xl my-3 lg:text-center  lg:mx-auto">
-                Step 2: Creation Portions/Servings
+              <div className="flex flex-row my-2 mb-5 gap-5 justify-between">
+                <label
+                  className="font-subtitle text-black text-lg lg:text-xl w-full my-auto"
+                  htmlFor="startingAmount"
+                >
+                  Account for the loss associated with Decarboxylation?
+                </label>
+
+                <input
+                  type="checkbox"
+                  className="w-[25px]  py-2 pl-3  text-black h-12 text-xl my-auto  "
+                  checked={checkedDecarboxylation}
+                  onChange={() =>
+                    setCheckedDecarboxylation(!checkedDecarboxylation)
+                  }
+                />
+              </div>
+              <div className="py-4 mt-4 mb-4 border-y-2">
+                <h2 className="font-title font-semibold text-2xl">
+                  Potency Results For The Entire Batch
+                </h2>
+                <table class="table-fixed w-full">
+                  <thead>
+                    <tr className="font-title font-semibold text-left">
+                      <th className=""></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody className="font-subtitle">
+                    <tr className="text-xl">
+                      <td>Total mg of THC</td>
+                      <td className="font-title font-medium text-2xl my-auto text-right">
+                        <CountUp
+                          decimals={2}
+                          duration={0.3}
+                          end={potencyResults.totalTHC}
+                        />
+                        <span className="text-sm font-light">mg</span>
+                      </td>
+                    </tr>
+                    <tr className="text-xl">
+                      <td>Total mg of CBD</td>
+                      <td className="font-title font-medium text-2xl my-auto text-right">
+                        <CountUp
+                          decimals={2}
+                          duration={0.3}
+                          end={potencyResults.totalCBD}
+                        />
+                        <span className="text-sm font-light">mg</span>
+                      </td>
+                    </tr>
+                    <tr className="text-xl">
+                      <td>Total mg of THC per tablespoon</td>
+                      <td className="font-title font-medium text-2xl my-auto text-right">
+                        <CountUp
+                          decimals={2}
+                          duration={0.3}
+                          end={potencyResults.totalTHCPerTablespoon}
+                        />
+                        <span className="text-sm font-light">mg</span>
+                      </td>
+                    </tr>
+                    <tr className="text-xl">
+                      <td>Total mg of CBD per tablespoon</td>
+                      <td className="font-title font-medium text-2xl my-auto text-right">
+                        <CountUp
+                          decimals={2}
+                          duration={0.3}
+                          end={potencyResults.totalCBDPerTablespoon}
+                        />
+                        <span className="text-sm font-light">mg</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h2 className="font-title font-semibold text-black text-2xl lg:text-4xl my-3 mb-1 lg:text-center  lg:mx-auto">
+                Step 2: Calculate Potency Of Each Serving/Edible
               </h2>
-              <p className="text-sm lg:text-base text-black lg:text-center lg:w-3/4 lg:mx-auto mt-2">
+              <p className="text-sm lg:text-base text-black lg:text-center w-5/6 lg:w-3/4 lg:mx-auto my-2 mt-1">
                 Determine the potency per serving in your recipe by specifying
                 the number of tablespoons of oil and the total servings. This
                 calculation will yield the milligrams (mg) of THC and CBD in the
@@ -217,6 +311,80 @@ export default function Home() {
                   onChange={(e) => setTotalServings(e.target.value)}
                 />
               </div>
+              <div className="py-4 mt-4 mb-2 border-y-2">
+                <h2 className="font-title font-semibold text-2xl  ">
+                  Potency Results Of Each Serving/Edible
+                </h2>
+                <table class="table-fixed w-full">
+                  <thead>
+                    <tr className="font-title font-semibold text-left">
+                      <th className=""></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody className="font-subtitle">
+                    <tr className="text-xl">
+                      <td>Total mg of THC in entire recipe</td>
+                      <td className="font-title font-medium text-2xl my-auto text-right">
+                        <CountUp
+                          decimals={2}
+                          duration={0.3}
+                          end={
+                            potencyResults.totalTHCPerTablespoon *
+                            tablespoonsUsed
+                          }
+                        />
+                        <span className="text-sm font-light">mg</span>
+                      </td>
+                    </tr>
+                    <tr className="text-xl">
+                      <td>Total mg of CBD in entire recipe</td>
+                      <td className="font-title font-medium text-2xl my-auto text-right">
+                        <CountUp
+                          decimals={2}
+                          duration={0.3}
+                          end={
+                            potencyResults.totalCBDPerTablespoon *
+                            tablespoonsUsed
+                          }
+                        />
+                        <span className="text-sm font-light">mg</span>
+                      </td>
+                    </tr>
+                    <tr className="text-xl">
+                      <td>Total mg of THC in per serving</td>
+                      <td className="font-title font-medium text-2xl my-auto text-right">
+                        <CountUp
+                          decimals={2}
+                          duration={0.3}
+                          end={
+                            (potencyResults.totalTHCPerTablespoon *
+                              tablespoonsUsed) /
+                            totalServings
+                          }
+                        />
+                        <span className="text-sm font-light">mg</span>
+                      </td>
+                    </tr>
+                    <tr className="text-xl">
+                      <td>Total mg of CBD per serving</td>
+                      <td className="font-title font-medium text-2xl my-auto text-right">
+                        <CountUp
+                          decimals={2}
+                          duration={0.3}
+                          end={
+                            (potencyResults.totalCBDPerTablespoon *
+                              tablespoonsUsed) /
+                            totalServings
+                          }
+                        />
+                        <span className="text-sm font-light">mg</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
               <button
                 className="my-3 w-full  py-3 px-6 rounded-md text-black font-subtitle text-xl bg-[#B1C354]  duration-700"
                 type="submit"
@@ -225,7 +393,7 @@ export default function Home() {
               </button>
             </motion.form>
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 100, y: 0 }}
               transition={{ ease: "easeOut", duration: 1 }}
@@ -233,110 +401,10 @@ export default function Home() {
             >
               <div className="  rounded-lg  text-black ">
                 <h2 className="font-title font-semibold text-2xl my-1 mb-3">
-                  Results
+                  Potency Results For The Entire Batch
                 </h2>
-                <div className="flex flex-row justify-between my-2 gap-5  font-subtitle text-xl">
-                  <p className="my-auto">Total mg of THC</p>
-                  <p className="font-medium text-2xl my-auto">
-                    <CountUp
-                      decimals={2}
-                      duration={0.3}
-                      end={potencyResults.totalTHC}
-                    />
-                    <span className="text-sm font-light">mg</span>
-                  </p>
-                </div>
-                <div className="flex flex-row justify-between my-2 gap-5  font-subtitle text-xl ">
-                  <p className="my-auto">Total mg of CBD</p>
-                  <p className="font-medium text-2xl my-auto">
-                    <CountUp
-                      decimals={2}
-                      duration={0.5}
-                      end={potencyResults.totalCBD}
-                    />
-
-                    <span className="text-sm font-light">mg</span>
-                  </p>
-                </div>
-                <div className="flex flex-row justify-between my-2 gap-5  font-subtitle text-xl ">
-                  <p className="my-auto">Total mg of THC per tablespoon</p>
-                  <p className="font-medium text-2xl my-auto">
-                    <CountUp
-                      decimals={2}
-                      duration={0.5}
-                      end={potencyResults.totalTHCPerTablespoon}
-                    />
-
-                    <span className="text-sm font-light">mg</span>
-                  </p>
-                </div>
-                <div className="flex flex-row justify-between my-2 gap-5  font-subtitle text-xl ">
-                  <p className="my-auto">Total mg of CBD per tablespoon</p>
-                  <p className="font-medium text-2xl my-auto">
-                    <CountUp
-                      decimals={2}
-                      duration={0.5}
-                      end={potencyResults.totalCBDPerTablespoon}
-                    />
-
-                    <span className="text-sm font-light">mg</span>
-                  </p>
-                </div>
-                <div className="flex flex-row justify-between my-2 gap-5  font-subtitle text-xl">
-                  <p className="my-auto">Total mg of THC in entire recipe</p>
-                  <p className="font-medium text-2xl my-auto">
-                    <CountUp
-                      decimals={2}
-                      duration={0.3}
-                      end={potencyResults.totalTHCPerServings * tablespoonsUsed}
-                    />
-                    <span className="text-sm font-light">mg</span>
-                  </p>
-                </div>
-                <div className="flex flex-row justify-between my-2 gap-5  font-subtitle text-xl ">
-                  <p className="my-auto">Total mg of CBD in entire recipe</p>
-                  <p className="font-medium text-2xl my-auto">
-                    <CountUp
-                      decimals={2}
-                      duration={0.5}
-                      end={potencyResults.totalCBDPerServings * tablespoonsUsed}
-                    />
-
-                    <span className="text-sm font-light">mg</span>
-                  </p>
-                </div>
-                <div className="flex flex-row justify-between my-2 gap-5 font-subtitle text-xl ">
-                  <p className="my-auto">Total mg of THC in per serving</p>
-                  <p className="font-medium text-2xl my-auto">
-                    <CountUp
-                      decimals={2}
-                      duration={0.5}
-                      end={
-                        (potencyResults.totalTHCPerServings / totalServings) *
-                        tablespoonsUsed
-                      }
-                    />
-
-                    <span className="text-sm font-light">mg</span>
-                  </p>
-                </div>
-                <div className="flex flex-row justify-between my-2 gap-5  font-subtitle text-xl ">
-                  <p className="my-auto">Total mg of CBD per serving</p>
-                  <p className="font-medium text-2xl my-auto">
-                    <CountUp
-                      decimals={2}
-                      duration={0.5}
-                      end={
-                        (potencyResults.totalCBDPerServings / totalServings) *
-                        tablespoonsUsed
-                      }
-                    />
-
-                    <span className="text-sm font-light">mg</span>
-                  </p>
-                </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </section>
       </main>

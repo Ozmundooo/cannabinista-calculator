@@ -16,7 +16,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        title: ['"Libre Baskerville"', "sans-serif"],
+        title: ['"League Spartan"', "sans-serif"],
         subtitle: ["Helvetica Neue", "sans-serif"],
       },
     },
