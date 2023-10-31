@@ -158,7 +158,7 @@ export default function Home() {
                     CBD/CBDA %
                   </label>
                   <p className="text-sm lg:text-base text-black opacity-60 lg:w-3/4">
-                    CBD (cannabidiol) is a non-psychoactive compound in cannabis
+                    CBD (cannabidiol) is a psychoactive compound in cannabis
                     known for its potential therapeutic benefits, while CBDA
                     (cannabidiolic acid) is the precursor to CBD found in raw
                     cannabis, which needs to be decarboxylated (heated) to
@@ -270,6 +270,11 @@ export default function Home() {
                     </tr>
                   </tbody>
                 </table>
+                <p className="text-sm italic my-2">
+                  This calculator is designed to provide an approximation of the
+                  dosage of your homemade infusions and may not be 100%
+                  accurate. Start low and go slow, and consume responsibly.{" "}
+                </p>
               </div>
 
               <h2 className="font-title font-semibold text-black text-2xl lg:text-4xl my-3 mb-1 lg:text-center  lg:mx-auto">
@@ -383,6 +388,11 @@ export default function Home() {
                     </tr>
                   </tbody>
                 </table>
+                <p className="text-sm italic my-2">
+                  This calculator is designed to provide an approximation of the
+                  dosage of your homemade infusions and may not be 100%
+                  accurate. Start low and go slow, and consume responsibly.{" "}
+                </p>
               </div>
 
               <button
