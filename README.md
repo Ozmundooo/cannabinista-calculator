@@ -5,6 +5,12 @@ This is a Potency Calculator made on [Next.js](https://nextjs.org/)
 First, run the development server:
 
 ```bash
+npm install
+```
+
+then:
+
+```bash
 npm run dev
 ```
 
