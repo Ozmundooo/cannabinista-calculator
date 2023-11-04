@@ -84,7 +84,7 @@ export default function Home() {
       </Head>
       <main className="min-h-screen bg-white lg:my-auto">
         <Image
-          className="mx-auto my-6 h-[15vh] w-auto"
+          className="mx-auto my-6 h-32 lg:h-36 w-auto"
           src={cannabinistaLogo}
         />
 
