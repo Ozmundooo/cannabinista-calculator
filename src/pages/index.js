@@ -72,23 +72,17 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>cannabinista - Marijuana Mathematics</title>
+        {/* <title>cannabinista - Marijuana Mathematics</title>
         <meta
           name="description"
           content="Calculate potency for your infused products."
         />
         <meta property="og:image" content="/canabinista.png" />
         <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:image:height" content="630" /> */}
         {/* Add any additional meta tags or links to CSS/JS files here */}
       </Head>
       <main className="min-h-screen bg-white lg:my-auto">
-        <Image
-          className="mx-auto my-6 h-32 lg:h-36 w-auto"
-          alt="Cannabinista Logo"
-          src={cannabinistaLogo}
-        />
-
         <section className=" lg:my-auto">
           <div className="xl:flex xl:flex-row xl:mx-10 2xl:mx-40">
             <motion.form
